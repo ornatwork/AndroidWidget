@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+xmlns:android="http://schemas.android.com/apk/res/android" 
+android:orientation="vertical" 
+android:layout_width="fill_parent" 
+android:layout_height="fill_parent">
+	<TextView 
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content"
+	android:textColor="#FFFF00" 
+	android:text="
+\n\n
+Thank you for installing the Beer time Widget.\n\n
+This is a widget, not a regular application. Unlike regular applications, widgets are placed on the home screen and offer useful information at a glance.  Pressing this widget will open the Beer time application.\n\n
+Please email us at BeerTimeApp@gmail.com or press the feedback link below if you have any suggestions.\n\n" 
+	/>
+	
+	<TextView 
+	android:id="@+id/txFeedBackEmail"
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content"
+	android:textColor="#FFFF00"
+	android:textColorLink="#FFFF00"
+	android:textStyle="bold"
+	android:text="BeerTimeApp@gmail.com"
+	/>
+</LinearLayout>

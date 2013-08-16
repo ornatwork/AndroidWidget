@@ -1,0 +1,144 @@
+
+
+1. Rename BeerTimeWidget.apk to release.BeerTimeWidget.apk
+
+
+2. Generate certificate 
+-----------------------------------
+D:\work\eclipse_workspace\BeerTimeWidget\release>keytool -genkey -v -keystore D:\work\eclipse_workspace\BeerTimeWidget\release\beer-release-key.keystore -alias Flipper -keyalg RSA -keysize 2048 -validity 10000
+
+Enter keystore password:  beertime1700
+What is your first and last name?
+  [Unknown]:  Stash & Flipper
+What is the name of your organizational unit?
+  [Unknown]:  BeerTime
+What is the name of your organization?
+  [Unknown]:  BeerTime
+What is the name of your City or Locality?
+  [Unknown]:  New York
+What is the name of your State or Province?
+  [Unknown]:  New York
+What is the two-letter country code for this unit?
+  [Unknown]:  US
+Is CN=Stash & Flipper, OU=BeerTime, O=BeerTime, L=New York, ST=New York, C=US correct?
+  [no]:  y
+
+Generating 2,048 bit RSA key pair and self-signed certificate (MD5WithRSA)
+        for: CN=Stash & Flipper, OU=BeerTime, O=BeerTime, L=New York, ST=New York, C=US
+Enter key password for <Flipper>
+        (RETURN if same as keystore password):
+[Storing D:\work\eclipse_workspace\BeerTimeWidget\release\beer-release-key.keystore]
+
+
+
+
+
+
+3. Use the certificate to sign the app / apk
+-----------------------------------
+D:\work\eclipse_workspace\BeerTimeWidget\release>jarsigner -verbose -keystore beer-release-key.keystore release.BeerTimeWidget.apk Flipper
+
+Enter Passphrase for keystore: beertime1700
+   adding: META-INF/MANIFEST.MF
+   adding: META-INF/FLIPPER.SF
+   adding: META-INF/FLIPPER.RSA
+  signing: res/drawable/beer.png
+  signing: res/drawable/beer72_0.png
+  signing: res/drawable/beer72_1.png
+  signing: res/drawable/beer72_2.png
+  signing: res/drawable/beer72_3.png
+  signing: res/drawable/beer72_4.png
+  signing: res/drawable/beer72_5.png
+  signing: res/drawable/beer72_6.png
+  signing: res/drawable/beer72_7.png
+  signing: res/drawable/beer72_8.png
+  signing: res/drawable/beer72_9.png
+  signing: res/drawable/icon.png
+  signing: res/drawable/pspbrwse.jbf
+  signing: res/layout/beerwidget.xml
+  signing: res/layout/info.xml
+  signing: res/layout/main.xml
+  signing: res/layout/widget.xml
+  signing: res/menu/mainmenu.xml
+  signing: res/xml/beerwidgetlayout.xml
+  signing: AndroidManifest.xml
+  signing: resources.arsc
+  signing: classes.dex
+
+verify it 
+
+D:\work\eclipse_workspace\BeerTimeWidget\release>  jarsigner -verify -verbose release.BeerTimeWidget.apk
+
+        1731 Thu Oct 27 18:05:26 GMT-07:00 2011 META-INF/MANIFEST.MF
+        1852 Thu Oct 27 18:05:26 GMT-07:00 2011 META-INF/FLIPPER.SF
+        1349 Thu Oct 27 18:05:26 GMT-07:00 2011 META-INF/FLIPPER.RSA
+sm    669870 Thu Oct 27 17:23:08 GMT-07:00 2011 res/drawable/beer.png
+sm      8774 Thu Oct 27 17:23:08 GMT-07:00 2011 res/drawable/beer72_0.png
+sm      8035 Thu Oct 27 17:23:08 GMT-07:00 2011 res/drawable/beer72_1.png
+sm      8176 Thu Oct 27 17:23:08 GMT-07:00 2011 res/drawable/beer72_2.png
+sm      8333 Thu Oct 27 17:23:08 GMT-07:00 2011 res/drawable/beer72_3.png
+sm      8556 Thu Oct 27 17:23:08 GMT-07:00 2011 res/drawable/beer72_4.png
+sm      8698 Thu Oct 27 17:23:08 GMT-07:00 2011 res/drawable/beer72_5.png
+sm      8929 Thu Oct 27 17:23:08 GMT-07:00 2011 res/drawable/beer72_6.png
+sm      9104 Thu Oct 27 17:23:08 GMT-07:00 2011 res/drawable/beer72_7.png
+sm      9292 Thu Oct 27 17:23:08 GMT-07:00 2011 res/drawable/beer72_8.png
+sm      9747 Thu Oct 27 17:23:08 GMT-07:00 2011 res/drawable/beer72_9.png
+sm      9747 Thu Oct 27 17:23:08 GMT-07:00 2011 res/drawable/icon.png
+sm     15235 Thu Oct 27 17:57:16 GMT-07:00 2011 res/drawable/pspbrwse.jbf
+sm      1104 Thu Oct 27 17:57:16 GMT-07:00 2011 res/layout/beerwidget.xml
+sm      1776 Thu Oct 27 17:57:16 GMT-07:00 2011 res/layout/info.xml
+sm      1376 Thu Oct 27 17:57:16 GMT-07:00 2011 res/layout/main.xml
+sm       900 Thu Oct 27 17:57:16 GMT-07:00 2011 res/layout/widget.xml
+sm       484 Thu Oct 27 17:57:16 GMT-07:00 2011 res/menu/mainmenu.xml
+sm       544 Thu Oct 27 17:57:16 GMT-07:00 2011 res/xml/beerwidgetlayout.xml
+sm      2704 Thu Oct 27 17:57:16 GMT-07:00 2011 AndroidManifest.xml
+sm      3340 Thu Oct 27 17:23:08 GMT-07:00 2011 resources.arsc
+sm     13604 Thu Oct 27 17:57:16 GMT-07:00 2011 classes.dex
+
+  s = signature was verified
+  m = entry is listed in manifest
+  k = at least one certificate was found in keystore
+  i = at least one certificate was found in identity scope
+
+jar verified.
+
+
+
+
+
+
+4. Align the app / apk
+-----------------------------------
+
+D:\work\eclipse_workspace\BeerTimeWidget\release>zipalign -v 4 release.BeerTimeWidget.apk aligned.BeerTimeWidget.apk
+
+Verifying alignment of aligned.BeerTimeWidget.apk (4)...
+      50 META-INF/MANIFEST.MF (OK - compressed)
+     865 META-INF/FLIPPER.SF (OK - compressed)
+    1766 META-INF/FLIPPER.RSA (OK - compressed)
+    2880 res/drawable/beer.png (OK)
+  672808 res/drawable/beer72_0.png (OK)
+  681640 res/drawable/beer72_1.png (OK)
+  689732 res/drawable/beer72_2.png (OK)
+  697964 res/drawable/beer72_3.png (OK)
+  706352 res/drawable/beer72_4.png (OK)
+  714964 res/drawable/beer72_5.png (OK)
+  723720 res/drawable/beer72_6.png (OK)
+  732704 res/drawable/beer72_7.png (OK)
+  741864 res/drawable/beer72_8.png (OK)
+  751212 res/drawable/beer72_9.png (OK)
+  761012 res/drawable/icon.png (OK)
+  770814 res/drawable/pspbrwse.jbf (OK - compressed)
+  779874 res/layout/beerwidget.xml (OK - compressed)
+  780388 res/layout/info.xml (OK - compressed)
+  781115 res/layout/main.xml (OK - compressed)
+  781692 res/layout/widget.xml (OK - compressed)
+  782146 res/menu/mainmenu.xml (OK - compressed)
+  782456 res/xml/beerwidgetlayout.xml (OK - compressed)
+  782790 AndroidManifest.xml (OK - compressed)
+  783740 resources.arsc (OK)
+  787121 classes.dex (OK - compressed)
+Verification succesful
+
+
+

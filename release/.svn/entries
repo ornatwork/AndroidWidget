@@ -1,0 +1,67 @@
+8
+
+dir
+51
+https://blade/svn/korta/trunk/beer/BeerTimeWidget/release
+https://blade/svn/korta
+
+
+
+2011-10-28T00:58:21.093750Z
+51
+orn
+
+
+svn:special svn:externals svn:needs-lock
+
+beer-release-key.keystore
+file
+52
+
+
+
+2011-10-28T01:03:43.000000Z
+0165aaff57a12f276fe6a47cec150461
+2011-10-28T01:15:17.281250Z
+52
+orn
+has-props
+
+release.BeerTimeWidget.apk
+file
+52
+
+
+
+2011-10-28T01:05:26.640625Z
+7d42d7e836aec128651007cd0930c147
+2011-10-28T01:15:17.281250Z
+52
+orn
+has-props
+
+BeerTimeWidget.apk
+file
+58
+
+
+
+2011-11-06T23:51:27.109375Z
+db57876e9c0fa85c1d3904414118abe2
+2011-11-07T00:12:01.500000Z
+58
+orn
+has-props
+
+beertime.certificate.and.sign.txt
+file
+54
+
+
+
+2011-10-28T01:19:41.484375Z
+fedd9a211064b49a2fa282b27b938d04
+2011-10-28T01:19:54.343750Z
+54
+orn
+
